@@ -1,12 +1,19 @@
 import React from "react"
 
+import { useRouter } from "expo-router"
+
 import { View, Text, Image, TouchableOpacity } from "react-native"
 
-export function ProductCard({ title, price, thumbnail, onPress }: any) {
+export function ProductCard({ id, title, price, thumbnail }: any) {
+  const router = useRouter()
+
+  const handlePres = () => {
+    router.push(`/(products)/${id}`)
+  }
   return (
     <TouchableOpacity
+      onPress={handlePres}
       className="w-full h-32 bg-white rounded-tl-3xl rounded-br-3xl shadow-md flex-row"
-      onPress={onPress}
     >
       <Image source={{ uri: thumbnail }} className="w-32 h-full" />
 

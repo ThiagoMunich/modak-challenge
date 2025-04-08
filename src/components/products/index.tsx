@@ -11,7 +11,9 @@ export function ProductsList({ products }: Pick<ProductListResponse, "products">
       data={products}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={{ paddingVertical: 20, paddingHorizontal: 16, gap: 20 }}
-      renderItem={({ item }) => <ProductCard title={item.title} price={item.price} thumbnail={item.thumbnail} />}
+      renderItem={({ item }) => (
+        <ProductCard id={item.id} title={item.title} price={item.price} thumbnail={item.thumbnail} />
+      )}
     />
   )
 }
