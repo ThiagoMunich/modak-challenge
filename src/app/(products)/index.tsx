@@ -1,10 +1,10 @@
 import React from "react"
-import { View, Text } from "react-native"
+import { View, Text, SafeAreaView } from "react-native"
 
 export default function Home() {
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <SafeAreaView>
+      <Text className="text-6xl">index</Text>
+    </SafeAreaView>
   )
 }

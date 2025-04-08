@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "module": "NodeNext",
+    "baseUrl": "./src",
     "moduleResolution": "nodenext",
     "paths": {
       "@/*": [
@@ -11,6 +12,7 @@
     }
   },
   "include": [
+    "src/**/*",
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
