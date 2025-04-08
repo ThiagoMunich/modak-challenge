@@ -1,6 +1,6 @@
 import { ProductListResponse } from "@/@types/products-types"
 import { api } from "@/services"
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery, useQuery, useSuspenseQuery } from "@tanstack/react-query"
 
 async function fetchProducts(): Promise<ProductListResponse> {
   let response = await api.get("/products?select=title,price,thumbnail")
@@ -9,7 +9,7 @@ async function fetchProducts(): Promise<ProductListResponse> {
 }
 
 export const useFetchProducts = () => {
-  const query = useQuery({
+  const query = useSuspenseQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
   })
