@@ -3,7 +3,7 @@ import { api } from "@/services"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 
 async function fetchProducts(): Promise<ProductListResponse> {
-  let response = await api.get("/products")
+  let response = await api.get("/products?select=title,price,thumbnail")
 
   return response.data
 }
