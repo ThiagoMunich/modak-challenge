@@ -1,10 +1,17 @@
 import React from "react"
+
 import { View, Text, SafeAreaView } from "react-native"
 
+import { useFetchProducts } from "@/hooks/useFetchProducts"
+
 export default function Home() {
+  const { data } = useFetchProducts()
+
   return (
     <SafeAreaView>
-      <Text className="text-6xl">index</Text>
+      <View>
+        <Text>{JSON.stringify(data)}</Text>
+      </View>
     </SafeAreaView>
   )
 }
