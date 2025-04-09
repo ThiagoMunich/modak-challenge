@@ -16,7 +16,7 @@ async function fetchProducts(): Promise<ProductListResponse> {
 
   let response = await api.get("/products?select=title,price,thumbnail")
 
-  return response.data
+  return response?.data
 }
 
 export const useFetchProducts = () => {
