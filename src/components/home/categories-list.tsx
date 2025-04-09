@@ -7,12 +7,15 @@ import { ErrorFallback } from "../error"
 import { ThemedChip } from "../shared/chip"
 import { useFetchCategories } from "@/hooks/useFetchCategories"
 import { CategoriesListResponse } from "@/@types/category-types"
+import { useFiltersStore } from "@/store/filters"
 
-export const CategoriesList = ({ activeSorting, setSortBy, closeBottomSheet }: any) => {
+export const CategoriesList = ({ closeBottomSheet }: any) => {
+  const { currentFilter, setCurrentFilter } = useFiltersStore()
+
   const { data, isFetching, isError, error } = useFetchCategories()
 
   const handleCategoryPress = useCallback((category: CategoriesListResponse) => {
-    setSortBy(category.slug)
+    setCurrentFilter(category.slug, "category")
     closeBottomSheet()
   }, [])
 
@@ -29,7 +32,7 @@ export const CategoriesList = ({ activeSorting, setSortBy, closeBottomSheet }: a
           <ThemedChip
             key={category.name}
             label={category.name}
-            isActive={activeSorting === category.slug}
+            isActive={currentFilter === category.slug}
             onPress={() => handleCategoryPress(category)}
           />
         ))
