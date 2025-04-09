@@ -1,21 +1,26 @@
+import { useQuery } from "@tanstack/react-query"
+
 import { api } from "@/services"
 import { ProductListResponse } from "@/@types/products-types"
-
-import { useSuspenseQuery } from "@tanstack/react-query"
 
 // 5 minutes
 const STALE_TIME = 1000 * 60 * 5
 
 async function fetchProducts(): Promise<ProductListResponse> {
-  let response = await api.get("/products?select=title,price,thumbnail")
+  // Keeping this to simulate API error
+  // return new Promise((_, reject) => {
+  //   setTimeout(() => {
+  //     reject(new Error("Simulating API error"))
+  //   }, 100)
+  // })
 
-  // throw new Error("Erro simulado na requisição")
+  let response = await api.get("/products?select=title,price,thumbnail")
 
   return response.data
 }
 
 export const useFetchProducts = () => {
-  const query = useSuspenseQuery({
+  const query = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
     staleTime: STALE_TIME,

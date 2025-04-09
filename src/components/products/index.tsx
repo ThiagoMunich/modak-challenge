@@ -3,8 +3,8 @@ import React from "react"
 import { FlatList, View, Text } from "react-native"
 
 import { ProductCard } from "../product"
-import { ProductListResponse } from "@/@types/products-types"
 import EmptyProductsList from "./empty-list"
+import { ProductListResponse } from "@/@types/products-types"
 
 export function ProductsList({ products }: Pick<ProductListResponse, "products">) {
   return (
