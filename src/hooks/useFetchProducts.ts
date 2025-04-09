@@ -16,9 +16,10 @@ async function fetchProducts(sortBy?: string): Promise<ProductListResponse> {
 
   const regularEndpoint = "/products?select=title,price,thumbnail"
 
-  const sortByEndpoint = `/products?select=title,price,thumbnail&sortBy=${sortBy}&order=asc`
+  // const sortByEndpoint = `/products?select=title,price,thumbnail&sortBy=${sortBy}&order=asc`
+  const filterByCategoryEndpoint = `/products/category/${sortBy}?select=title,price,thumbnail&`
 
-  let response = await api.get(sortBy ? sortByEndpoint : regularEndpoint)
+  let response = await api.get(sortBy ? filterByCategoryEndpoint : regularEndpoint)
 
   return response?.data
 }

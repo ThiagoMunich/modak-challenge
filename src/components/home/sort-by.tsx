@@ -3,9 +3,9 @@ import { View } from "react-native"
 
 import { ThemedChip } from "../shared/chip"
 
-export function SortBy({ activeSorting, setsortBy, closeBottomSheet }: any) {
+export function SortBy({ activeSorting, setSortBy, closeBottomSheet }: any) {
   const handleFilterPress = (filter: string | undefined) => {
-    setsortBy(filter)
+    setSortBy(filter)
     closeBottomSheet()
   }
 

@@ -6,14 +6,14 @@ import { Loading } from "../loading"
 import { ErrorFallback } from "../error"
 import { ThemedChip } from "../shared/chip"
 import { useFetchCategories } from "@/hooks/useFetchCategories"
+import { CategoriesListResponse } from "@/@types/category-types"
 
-export const CategoriesList = ({ activeSorting, setsortBy }: any) => {
+export const CategoriesList = ({ activeSorting, setSortBy, closeBottomSheet }: any) => {
   const { data, isFetching, isError, error } = useFetchCategories()
 
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null)
-
-  const handleCategoryPress = useCallback((category: string) => {
-    setSelectedCategory((prev) => (prev === category ? null : category))
+  const handleCategoryPress = useCallback((category: CategoriesListResponse) => {
+    setSortBy(category.slug)
+    closeBottomSheet()
   }, [])
 
   if (isError) {
@@ -29,8 +29,8 @@ export const CategoriesList = ({ activeSorting, setsortBy }: any) => {
           <ThemedChip
             key={category.name}
             label={category.name}
-            isActive={selectedCategory === category.name}
-            onPress={() => handleCategoryPress(category.name)}
+            isActive={activeSorting === category.slug}
+            onPress={() => handleCategoryPress(category)}
           />
         ))
       )}

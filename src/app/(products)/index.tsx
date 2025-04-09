@@ -15,7 +15,7 @@ import { ThemedBottomSheet } from "@/components/shared/bottom-sheet"
 export default function Home() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
 
-  const [sortBy, setsortBy] = useState<"price" | "rating" | undefined>(undefined)
+  const [sortBy, setSortBy] = useState<"price" | "rating" | undefined>(undefined)
 
   const { data, isFetching, isError, error } = useFetchProducts(sortBy)
 
@@ -38,10 +38,10 @@ export default function Home() {
       <ThemedBottomSheet isOpen={isBottomSheetOpen} onClose={handleCloseBottomSheet}>
         <View className="flex-1 p-6 pb-10">
           <Text className="mb-2 text-slate-800 font-bold">Sort products by:</Text>
-          <SortBy activeSorting={sortBy} setsortBy={setsortBy} closeBottomSheet={handleCloseBottomSheet} />
+          <SortBy activeSorting={sortBy} setSortBy={setSortBy} closeBottomSheet={handleCloseBottomSheet} />
 
           <Text className="mt-5 mb-2 text-slate-800 font-bold">Filter by category:</Text>
-          <CategoriesList activeSorting={sortBy} setsortBy={setsortBy} />
+          <CategoriesList activeSorting={sortBy} setSortBy={setSortBy} closeBottomSheet={handleCloseBottomSheet} />
         </View>
       </ThemedBottomSheet>
     </SafeAreaView>
