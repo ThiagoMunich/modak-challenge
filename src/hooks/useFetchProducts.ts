@@ -6,7 +6,7 @@ import { ProductListResponse } from "@/@types/products-types"
 // 5 minutes
 const STALE_TIME = 1000 * 60 * 5
 
-async function fetchProducts(): Promise<ProductListResponse> {
+async function fetchProducts(sortBy?: string): Promise<ProductListResponse> {
   // Keeping this to simulate API error
   // return new Promise((_, reject) => {
   //   setTimeout(() => {
@@ -14,15 +14,19 @@ async function fetchProducts(): Promise<ProductListResponse> {
   //   }, 100)
   // })
 
-  let response = await api.get("/products?select=title,price,thumbnail")
+  const regularEndpoint = "/products?select=title,price,thumbnail"
+
+  const sortByEndpoint = `/products?select=title,price,thumbnail&sortBy=${sortBy}&order=asc`
+
+  let response = await api.get(sortBy ? sortByEndpoint : regularEndpoint)
 
   return response?.data
 }
 
-export const useFetchProducts = () => {
+export const useFetchProducts = (sortBy?: string) => {
   const query = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryKey: ["products", sortBy],
+    queryFn: () => fetchProducts(sortBy),
     staleTime: STALE_TIME,
   })
 

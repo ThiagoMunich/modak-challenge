@@ -1,4 +1,6 @@
-import { SafeAreaView } from "react-native"
+import { useState } from "react"
+
+import { Button, SafeAreaView } from "react-native"
 
 import { Loading } from "@/components/loading"
 import { Header } from "@/components/home/header"
@@ -7,11 +9,9 @@ import { ProductsList } from "@/components/products"
 import { useFetchProducts } from "@/hooks/useFetchProducts"
 
 export default function Home() {
-  const { data, isFetching, isError, error } = useFetchProducts()
+  const [sortBy, setsortBy] = useState("")
 
-  if (isFetching) {
-    return <Loading />
-  }
+  const { data, isFetching, isError, error } = useFetchProducts(sortBy)
 
   if (isError) {
     return <ErrorFallback message={error?.message} />
@@ -21,7 +21,9 @@ export default function Home() {
     <SafeAreaView className="flex-1 bg-slate-200">
       <Header />
 
-      <ProductsList products={data?.products ?? []} />
+      {isFetching ? <Loading /> : <ProductsList products={data?.products ?? []} />}
+
+      <Button title="SORT" onPress={() => setsortBy("price")} />
     </SafeAreaView>
   )
 }
