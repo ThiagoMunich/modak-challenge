@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react"
 
-import { Modal } from "react-native"
+import { Modal, View } from "react-native"
 
 import { BlurView } from "expo-blur"
 
@@ -22,13 +22,7 @@ export function ThemedBottomSheet({ isOpen, onClose, children }: ThemedBottomShe
         experimentalBlurMethod="dimezisBlurView"
         className="absolute top-0 left-0 bottom-0 right-0"
       />
-      <Animated.View
-        entering={SlideInDown.duration(500)}
-        exiting={SlideOutUp.duration(500)}
-        className="absolute bottom-0 z-10 bg-white w-full rounded-t-3xl"
-      >
-        {isOpen && children}
-      </Animated.View>
+      <View className="absolute bottom-0 z-10 bg-white w-full rounded-t-3xl">{isOpen && children}</View>
     </Modal>
   )
 }
