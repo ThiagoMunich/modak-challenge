@@ -1,6 +1,6 @@
 import React from "react"
 
-import { FlatList, View, Text } from "react-native"
+import { FlatList } from "react-native"
 
 import { ProductCard } from "../product"
 import EmptyProductsList from "./empty-list"
@@ -10,8 +10,8 @@ export function ProductsList({ products }: Pick<ProductListResponse, "products">
   return (
     <FlatList
       data={products}
-      ListEmptyComponent={<EmptyProductsList />}
       showsVerticalScrollIndicator={false}
+      ListEmptyComponent={<EmptyProductsList />}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={{ paddingVertical: 20, paddingHorizontal: 16, gap: 20 }}
       renderItem={({ item }) => (

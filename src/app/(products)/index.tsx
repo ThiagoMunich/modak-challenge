@@ -6,9 +6,9 @@ import { ProductsList } from "@/components/products"
 import { useFetchProducts } from "@/hooks/useFetchProducts"
 
 export default function Home() {
-  const { data, isLoading, isError, error } = useFetchProducts()
+  const { data, isFetching, isError, error } = useFetchProducts()
 
-  if (isLoading) {
+  if (isFetching) {
     return <Loading />
   }
 

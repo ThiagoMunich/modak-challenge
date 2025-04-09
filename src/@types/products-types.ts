@@ -32,14 +32,14 @@ export interface Dimensions {
 export interface Review {
   rating: number
   comment: string
-  date: string // or Date, if you prefer parsing it
+  date: string
   reviewerName: string
   reviewerEmail: string
 }
 
 export interface Meta {
-  createdAt: string // or Date
-  updatedAt: string // or Date
+  createdAt: string
+  updatedAt: string
   barcode: string
   qrCode: string
 }
