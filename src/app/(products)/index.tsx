@@ -7,6 +7,7 @@ import { Header } from "@/components/home/header"
 import { ErrorFallback } from "@/components/error"
 import { ProductsList } from "@/components/products"
 import { useFetchProducts } from "@/hooks/useFetchProducts"
+import { ThemedButton } from "@/components/shared/button"
 
 export default function Home() {
   const [sortBy, setsortBy] = useState("")
@@ -23,7 +24,7 @@ export default function Home() {
 
       {isFetching ? <Loading /> : <ProductsList products={data?.products ?? []} />}
 
-      <Button title="SORT" onPress={() => setsortBy("price")} />
+      <ThemedButton label="FILTERS 🔎" />
     </SafeAreaView>
   )
 }
