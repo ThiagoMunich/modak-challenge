@@ -7,7 +7,7 @@ import { ErrorFallback } from "../error"
 import { ThemedChip } from "../shared/chip"
 import { useFetchCategories } from "@/hooks/useFetchCategories"
 
-export const CategoriesList = () => {
+export const CategoriesList = ({ activeSorting, setsortBy }: any) => {
   const { data, isFetching, isError, error } = useFetchCategories()
 
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null)
