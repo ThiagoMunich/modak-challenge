@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 
-import { FlatList } from "react-native"
+import { FlatList, FlatListProps } from "react-native"
 
 import { ProductCard } from "../product"
 import EmptyProductsList from "./empty-list"
