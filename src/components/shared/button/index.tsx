@@ -9,7 +9,7 @@ export function ThemedButton({ label, ...rest }: Props) {
     <TouchableOpacity
       {...rest}
       activeOpacity={0.7}
-      className="bg-slate-900 py-3 px-6 rounded-full shadow-lg items-center justify-center mx-4 my-4"
+      className="bg-slate-900 py-3 px-6 rounded-full shadow-lg items-center justify-center m-3"
     >
       <Text className="text-white font-black text-xl">{label}</Text>
     </TouchableOpacity>

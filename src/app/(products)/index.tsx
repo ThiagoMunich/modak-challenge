@@ -1,19 +1,20 @@
 import { useCallback, useState } from "react"
 
-import { SafeAreaView, Text } from "react-native"
+import { SafeAreaView, Text, View } from "react-native"
 
 import { Loading } from "@/components/loading"
 import { Header } from "@/components/home/header"
+import { SortBy } from "@/components/home/sort-by"
 import { ErrorFallback } from "@/components/error"
 import { ProductsList } from "@/components/products"
-import { useFetchProducts } from "@/hooks/useFetchProducts"
 import { ThemedButton } from "@/components/shared/button"
+import { useFetchProducts } from "@/hooks/useFetchProducts"
 import { ThemedBottomSheet } from "@/components/shared/bottom-sheet"
 
 export default function Home() {
-  const [sortBy, setsortBy] = useState("")
-
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
+
+  const [sortBy, setsortBy] = useState<"price" | "rating" | undefined>(undefined)
 
   const { data, isFetching, isError, error } = useFetchProducts(sortBy)
 
@@ -34,7 +35,10 @@ export default function Home() {
       <ThemedButton label="FILTERS 🔎" onPress={() => setIsBottomSheetOpen(true)} />
 
       <ThemedBottomSheet isOpen={isBottomSheetOpen} onClose={handleCloseBottomSheet}>
-        <Text>test</Text>
+        <View className="flex-1 p-6 pb-10">
+          <Text className="mb-2 text-slate-800 font-bold">Sort products by:</Text>
+          <SortBy activeSorting={sortBy} setsortBy={setsortBy} closeBottomSheet={handleCloseBottomSheet} />
+        </View>
       </ThemedBottomSheet>
     </SafeAreaView>
   )
