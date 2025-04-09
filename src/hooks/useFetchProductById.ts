@@ -4,7 +4,7 @@ import { api } from "@/services"
 import { Product } from "@/@types/products-types"
 
 async function fetchProductById(id: number): Promise<Product> {
-  let response = await api.get(`/products/${id}?select=description,brande,stock`)
+  let response = await api.get(`/products/${id}?select=description,brand,stock`)
 
   return response.data
 }
