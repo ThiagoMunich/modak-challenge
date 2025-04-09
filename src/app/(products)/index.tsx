@@ -10,6 +10,8 @@ import { ProductsList } from "@/components/products"
 import { ThemedButton } from "@/components/shared/button"
 import { useFetchProducts } from "@/hooks/useFetchProducts"
 import { ThemedBottomSheet } from "@/components/shared/bottom-sheet"
+import { useFetchCategories } from "@/hooks/useFetchCategories"
+import { CategoriesList } from "@/components/home/categories-list"
 
 export default function Home() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false)
@@ -38,6 +40,9 @@ export default function Home() {
         <View className="flex-1 p-6 pb-10">
           <Text className="mb-2 text-slate-800 font-bold">Sort products by:</Text>
           <SortBy activeSorting={sortBy} setsortBy={setsortBy} closeBottomSheet={handleCloseBottomSheet} />
+
+          <Text className="mt-5 mb-2 text-slate-800 font-bold">Filter by category:</Text>
+          <CategoriesList />
         </View>
       </ThemedBottomSheet>
     </SafeAreaView>
