@@ -2,9 +2,12 @@ import React from "react"
 
 import { useRouter } from "expo-router"
 
+import { Product } from "@/@types/products-types"
 import { View, Text, Image, TouchableOpacity } from "react-native"
 
-export function ProductCard({ id, title, price, thumbnail }: any) {
+type ProductCardProps = Pick<Product, "id" | "title" | "price" | "thumbnail">
+
+export function ProductCard({ id, title, price, thumbnail }: ProductCardProps) {
   const router = useRouter()
 
   const handlePres = () => {
