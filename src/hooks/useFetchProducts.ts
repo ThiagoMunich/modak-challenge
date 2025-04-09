@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 
 import { api } from "@/services"
-import { ProductListResponse } from "@/@types/products-types"
 import { useFiltersStore } from "@/store/filters"
 import { FilterProps } from "@/@types/filter-types"
+import { ProductListResponse } from "@/@types/products-types"
 
 // 5 minutes
 const STALE_TIME = 1000 * 60 * 5
@@ -15,24 +15,21 @@ async function fetchProducts(filter?: string, type?: FilterProps["type"]): Promi
   //     reject(new Error("Simulating API error"))
   //   }, 100)
   // })
+  const base = "/products?select=title,price,thumbnail"
 
-  const allProductsEndpoint = "/products?select=title,price,thumbnail"
+  const endpoints = {
+    sort: `${base}&sortBy=${filter}&order=asc`,
+    category: `/products/category/${filter}?select=title,price,thumbnail`,
+  }
 
-  const sortByEndpoint = `/products?select=title,price,thumbnail&sortBy=${filter}&order=asc`
+  const finalEndpoint = type ? endpoints[type] : base
 
-  const filterByCategoryEndpoint = `/products/category/${filter}?select=title,price,thumbnail&`
+  const response = await api.get(finalEndpoint)
 
-  const finalEndpoint =
-    type === "category" ? filterByCategoryEndpoint : type === "sort" ? sortByEndpoint : allProductsEndpoint
-
-  console.log(finalEndpoint)
-
-  let response = await api.get(finalEndpoint)
-
-  return response?.data
+  return response.data
 }
 
-export const useFetchProducts = (sortBy?: string) => {
+export const useFetchProducts = () => {
   const { currentFilter, type } = useFiltersStore()
 
   const query = useQuery({

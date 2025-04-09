@@ -30,7 +30,7 @@ export default function ProductDetails() {
 
   return (
     <View className="flex-1">
-      <Header brand={data?.brand ?? "Hire Brazilian Dev"} />
+      <Header brand={data?.brand ?? "Temp Header"} />
 
       <Description description={data.description} />
 
