@@ -1,12 +1,16 @@
 import React, { memo } from "react"
 
-import { FlatList, FlatListProps } from "react-native"
+import { FlatList } from "react-native"
 
 import { ProductCard } from "../product"
 import EmptyProductsList from "./empty-list"
-import { ProductListResponse } from "@/@types/products-types"
+import { ProductDTO } from "@/@types/products-types"
 
-export const ProductsList = memo(({ products }: Pick<ProductListResponse, "products">) => {
+type Props = {
+  products: ProductDTO[]
+}
+
+export const ProductsList = memo(({ products }: Props) => {
   return (
     <FlatList
       data={products}

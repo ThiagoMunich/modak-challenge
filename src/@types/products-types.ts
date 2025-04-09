@@ -44,8 +44,17 @@ export interface Meta {
   qrCode: string
 }
 
+export interface ProductDTO {
+  id: number
+  title: string
+  price: number
+  thumbnail: string
+  description: string
+  brand: string
+  stock: number
+}
 export interface ProductListResponse {
-  products: Product[]
+  products: ProductDTO[]
   total: number
   skip: number
   limit: number

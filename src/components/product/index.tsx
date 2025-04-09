@@ -1,13 +1,14 @@
 import React from "react"
 
+import { View, Text, TouchableOpacity } from "react-native"
+
 import { useRouter } from "expo-router"
 
 import { Image } from "expo-image"
 
-import { Product } from "@/@types/products-types"
-import { View, Text, TouchableOpacity } from "react-native"
+import { ProductDTO } from "@/@types/products-types"
 
-type ProductCardProps = Pick<Product, "id" | "title" | "price" | "thumbnail">
+type ProductCardProps = Pick<ProductDTO, "id" | "title" | "price" | "thumbnail">
 
 const BLUR_HASH =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj["

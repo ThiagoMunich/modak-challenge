@@ -44,7 +44,7 @@ export default function Home() {
     <SafeAreaView className="flex-1 bg-slate-200">
       <Header />
 
-      {isFetching ? <Loading /> : <ProductsList products={data?.products} />}
+      {isFetching ? <Loading /> : <ProductsList products={data || []} />}
 
       <ThemedButton onPress={() => setIsBottomSheetOpen(true)}>
         <ThemedButton.Text>FILTERS 🔎</ThemedButton.Text>

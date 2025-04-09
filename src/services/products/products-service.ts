@@ -1,5 +1,7 @@
 import { api } from ".."
+import { Product } from "@/@types/products-types"
 import { FilterProps } from "@/@types/filter-types"
+import { mapProductToDTO } from "@/mappers/products/product-mapper"
 
 export async function fetchProducts(filter?: string, type?: FilterProps["type"]) {
   // Keeping this to simulate API error
@@ -9,16 +11,20 @@ export async function fetchProducts(filter?: string, type?: FilterProps["type"])
   //   }, 100)
   // })
 
-  const base = "/products?select=title,price,thumbnail"
+  const base = "/products?select=title,price,thumbnail,brand,description,stock"
 
   const endpoints = {
     sort: `${base}&sortBy=${filter}&order=asc`,
-    category: `/products/category/${filter}?select=title,price,thumbnail`,
+    category: `/products/category/${filter}?select=title,price,thumbnail,brand,description,stock`,
   }
 
   const finalEndpoint = type ? endpoints[type] : base
 
   const response = await api.get(finalEndpoint)
 
-  return response.data
+  const rawProducts: Product[] = response?.data?.products
+
+  const products = rawProducts?.map(mapProductToDTO)
+
+  return products
 }
