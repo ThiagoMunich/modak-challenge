@@ -1,13 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { api } from "@/services"
-import { Product } from "@/@types/products-types"
-
-async function fetchProductById(id: number): Promise<Product> {
-  let response = await api.get(`/products/${id}?select=description,brand,stock`)
-
-  return response?.data
-}
+import { fetchProductById } from "@/services/products/products-by-id-service"
 
 export const useFetchProductById = (id: number) => {
   const query = useQuery({
