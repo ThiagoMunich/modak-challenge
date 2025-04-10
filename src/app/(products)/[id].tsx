@@ -1,6 +1,6 @@
 import React from "react"
 
-import { View } from "react-native"
+import { SafeAreaView, View } from "react-native"
 
 import { useLocalSearchParams } from "expo-router"
 
@@ -29,12 +29,12 @@ export default function ProductDetails() {
   }
 
   return (
-    <View className="flex-1">
-      <Header brand={data?.brand ?? "Temp Header"} />
+    <SafeAreaView className="flex-1 bg-slate-200">
+      <Header brand={data?.brand ?? "I'm a decent dev :)"} />
 
       <Description description={data.description} />
 
       <StockAvailability stock={data.stock} />
-    </View>
+    </SafeAreaView>
   )
 }
