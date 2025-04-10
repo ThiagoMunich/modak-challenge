@@ -22,6 +22,7 @@ export function ProductCard({ id, title, price, thumbnail }: ProductCardProps) {
   return (
     <TouchableOpacity
       onPress={handlePres}
+      activeOpacity={0.7}
       className="w-full h-32 bg-white rounded-tl-3xl rounded-br-3xl shadow-md flex-row"
     >
       <Image
