@@ -2,8 +2,11 @@ import React, { ReactNode } from "react"
 
 import { Text, View } from "react-native"
 
+import clsx from "clsx"
+
 import Animated, { FadeInDown, SlideInDown } from "react-native-reanimated"
 
+import { Device } from "@/configs/device"
 import { Product } from "@/@types/products-types"
 
 type Props = Pick<Product, "stock">
@@ -47,7 +50,11 @@ function NoStock() {
 
 function Box({ children }: { children: ReactNode }) {
   return (
-    <View className="items-center py-5 border-2 border-dashed border-red-700 rounded-full shadow shadow-red-700">
+    <View
+      className={clsx("items-center py-5 border-2 border-dashed border-red-700 rounded-full", {
+        ["shadow shadow-red-700"]: Device.isIos,
+      })}
+    >
       {children}
     </View>
   )

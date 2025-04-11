@@ -3,6 +3,8 @@ import { Alert } from "react-native"
 import * as Notifications from "expo-notifications"
 import { requestNotificationPermission } from "@/utils/request-notifications-permission"
 
+const NOTIFICATION_DELAY = 5
+
 export function useScheduleNotification() {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -16,6 +18,9 @@ export function useScheduleNotification() {
         Alert.alert("Permission required", "Enable notifications in settings.")
         return
       }
+
+      await Notifications.cancelAllScheduledNotificationsAsync()
+
       await Notifications.scheduleNotificationAsync({
         content: {
           title: "Notificação 🔔",
@@ -26,7 +31,7 @@ export function useScheduleNotification() {
         },
         trigger: {
           type: "timeInterval",
-          seconds: 5,
+          seconds: NOTIFICATION_DELAY,
         } as Notifications.TimeIntervalTriggerInput,
       })
     } catch (error) {
