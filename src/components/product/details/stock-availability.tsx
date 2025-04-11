@@ -18,14 +18,6 @@ export function StockAvailability({ stock }: Props) {
   )
 }
 
-function Box({ children }: { children: ReactNode }) {
-  return (
-    <View className="items-center py-5 border-2 border-dashed border-red-700 rounded-full shadow shadow-red-700">
-      {children}
-    </View>
-  )
-}
-
 function CurrentStock({ stock }: Props) {
   return (
     <Box>
@@ -50,5 +42,13 @@ function NoStock() {
       <Text className="text-gray-600">This item has just</Text>
       <Text className="text-red-700 text-center font-black text-4xl">SOLD OUT</Text>
     </Box>
+  )
+}
+
+function Box({ children }: { children: ReactNode }) {
+  return (
+    <View className="items-center py-5 border-2 border-dashed border-red-700 rounded-full shadow shadow-red-700">
+      {children}
+    </View>
   )
 }
