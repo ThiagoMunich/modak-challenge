@@ -8,23 +8,23 @@ import { Product } from "@/@types/products-types"
 import { NotificationReminder } from "@/components/notifications"
 import { useScheduleNotification } from "@/hooks/useScheduleNotification"
 
-type Props = Pick<Product, "brand">
+type Props = Pick<Product, "brand" | "id">
 
-export function Header({ brand }: Props) {
-  const { isLoading, scheduleNotification } = useScheduleNotification()
+export function Header({ brand, id }: Props) {
+  const { scheduleNotification } = useScheduleNotification()
 
   const { back } = useRouter()
 
   return (
     <View className="w-full flex-row shadow-xl bg-slate-900 items-center justify-center pt-5 px-5 min-h-40">
       {Device.isAndroid && (
-        <TouchableOpacity className="mr-auto w-1/11" onPress={back}>
+        <TouchableOpacity onPress={back}>
           <Text className="text-3xl">🔙</Text>
         </TouchableOpacity>
       )}
-      <Text className="text-white font-thin text-5xl text-center w-ful">✨ {brand}</Text>
+      <Text className="text-white font-thin text-5xl text-center mr-auto ml-auto">{brand}</Text>
 
-      <NotificationReminder onPress={() => scheduleNotification(brand)} />
+      <NotificationReminder onPress={() => scheduleNotification(brand, id)} />
     </View>
   )
 }

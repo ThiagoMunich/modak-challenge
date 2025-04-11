@@ -1,11 +1,12 @@
 import React from "react"
 
-import { SafeAreaView, View } from "react-native"
+import { SafeAreaView } from "react-native"
 
 import { useLocalSearchParams } from "expo-router"
 
 import { Loading } from "@/components/loading"
 import { ErrorFallback } from "@/components/error"
+import { ThemedButton } from "@/components/shared/button"
 import { Header } from "@/components/product/details/header"
 import { useFetchProductById } from "@/hooks/useFetchProductById"
 import { Description } from "@/components/product/details/description"
@@ -14,14 +15,20 @@ import { StockAvailability } from "@/components/product/details/stock-availabili
 export default function ProductDetails() {
   const { id } = useLocalSearchParams()
 
-  const { data, isFetching, isError, error } = useFetchProductById(Number(id))
+  const { data, isFetching, isError, error, refetch } = useFetchProductById(Number(id))
 
   if (isFetching) {
     return <Loading />
   }
 
   if (isError) {
-    return <ErrorFallback message={error?.message} />
+    return (
+      <ErrorFallback message={error?.message}>
+        <ThemedButton onPress={() => refetch()}>
+          <ThemedButton.Text>TRY AGAIN</ThemedButton.Text>
+        </ThemedButton>
+      </ErrorFallback>
+    )
   }
 
   if (!data) {
@@ -30,7 +37,7 @@ export default function ProductDetails() {
 
   return (
     <SafeAreaView className="flex-1 bg-slate-200">
-      <Header brand={data?.brand} />
+      <Header brand={data?.brand} id={data?.id} />
 
       <Description description={data.description} />
 

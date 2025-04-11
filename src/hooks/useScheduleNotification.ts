@@ -6,7 +6,7 @@ import { requestNotificationPermission } from "@/utils/request-notifications-per
 export function useScheduleNotification() {
   const [isLoading, setIsLoading] = useState(false)
 
-  const scheduleNotification = async (brand: string) => {
+  const scheduleNotification = async (brand: string, id: number) => {
     try {
       setIsLoading(true)
 
@@ -20,6 +20,9 @@ export function useScheduleNotification() {
         content: {
           title: "Notificação 🔔",
           body: `${brand} is now available ✅`,
+          data: {
+            productId: id,
+          },
         },
         trigger: {
           type: "timeInterval",
