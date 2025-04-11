@@ -8,8 +8,8 @@ import { Loading } from "@/components/loading"
 import { ErrorFallback } from "@/components/error"
 import { ThemedButton } from "@/components/shared/button"
 import { Header } from "@/components/product/details/header"
-import { useFetchProductById } from "@/hooks/useFetchProductById"
 import { Description } from "@/components/product/details/description"
+import { useFetchProductById } from "@/hooks/products/useFetchProductById"
 import { StockAvailability } from "@/components/product/details/stock-availability"
 
 export default function ProductDetails() {

@@ -5,9 +5,9 @@ import { View } from "react-native"
 import { Loading } from "../loading"
 import { ErrorFallback } from "../error"
 import { ThemedChip } from "../shared/chip"
-import { useFetchCategories } from "@/hooks/useFetchCategories"
-import { CategoriesListResponse } from "@/@types/category-types"
 import { useFiltersStore } from "@/store/filters"
+import { CategoriesListResponse } from "@/@types/category-types"
+import { useFetchCategories } from "@/hooks/categories/useFetchCategories"
 
 export const CategoriesList = ({ closeBottomSheet }: any) => {
   const { currentFilter, setCurrentFilter } = useFiltersStore()

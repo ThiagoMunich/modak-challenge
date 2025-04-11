@@ -6,7 +6,7 @@ import { useRouter } from "expo-router"
 import { Device } from "@/configs/device"
 import { Product } from "@/@types/products-types"
 import { NotificationReminder } from "@/components/notifications"
-import { useScheduleNotification } from "@/hooks/useScheduleNotification"
+import { useScheduleNotification } from "@/hooks/notifications/useScheduleNotification"
 
 type Props = Pick<Product, "brand" | "id">
 

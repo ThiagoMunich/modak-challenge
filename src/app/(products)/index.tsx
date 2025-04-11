@@ -9,8 +9,8 @@ import { SortBy } from "@/components/home/sort-by"
 import { ErrorFallback } from "@/components/error"
 import { ProductsList } from "@/components/products"
 import { ThemedButton } from "@/components/shared/button"
-import { useFetchProducts } from "@/hooks/useFetchProducts"
 import { CategoriesList } from "@/components/home/categories-list"
+import { useFetchProducts } from "@/hooks/products/useFetchProducts"
 import { ThemedBottomSheet } from "@/components/shared/bottom-sheet"
 
 export default function Home() {

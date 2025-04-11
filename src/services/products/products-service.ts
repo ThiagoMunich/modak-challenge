@@ -3,7 +3,7 @@ import { ProductDTO } from "@/@types/products-types"
 import { FilterProps } from "@/@types/filter-types"
 import { mapProductToDTO } from "@/mappers/products/product-mapper"
 
-export async function fetchProducts(filter?: string, type?: FilterProps["type"]): Promise<ProductDTO> {
+export async function fetchProducts(filter?: string, type?: FilterProps["type"]): Promise<ProductDTO[]> {
   // Keeping this to simulate API error
   // return new Promise((_, reject) => {
   //   setTimeout(() => {

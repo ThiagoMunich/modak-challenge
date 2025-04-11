@@ -13,7 +13,7 @@ import { Stack } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { useNotificationRedirect } from "@/hooks/useNotificationRedirect"
+import { useNotificationRedirect } from "@/hooks/notifications/useNotificationRedirect"
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
