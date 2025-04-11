@@ -22,7 +22,7 @@ export function Header({ brand, id }: Props) {
           <Text className="text-3xl">🔙</Text>
         </TouchableOpacity>
       )}
-      <Text className="text-white font-thin text-5xl text-center mr-auto ml-auto">{brand}</Text>
+      <Text className="text-white font-thin text-4xl text-center mr-auto ml-auto">{brand}</Text>
 
       <NotificationReminder onPress={() => scheduleNotification(brand, id)} />
     </View>
