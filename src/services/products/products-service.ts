@@ -1,9 +1,9 @@
 import { api } from ".."
-import { Product } from "@/@types/products-types"
+import { ProductDTO } from "@/@types/products-types"
 import { FilterProps } from "@/@types/filter-types"
 import { mapProductToDTO } from "@/mappers/products/product-mapper"
 
-export async function fetchProducts(filter?: string, type?: FilterProps["type"]) {
+export async function fetchProducts(filter?: string, type?: FilterProps["type"]): Promise<ProductDTO> {
   // Keeping this to simulate API error
   // return new Promise((_, reject) => {
   //   setTimeout(() => {
@@ -22,7 +22,7 @@ export async function fetchProducts(filter?: string, type?: FilterProps["type"])
 
   const response = await api.get(finalEndpoint)
 
-  const rawProducts: Product[] = response?.data?.products
+  const rawProducts = response?.data?.products
 
   const products = rawProducts?.map(mapProductToDTO)
 

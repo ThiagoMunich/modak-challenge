@@ -30,7 +30,7 @@ export default function ProductDetails() {
 
   return (
     <SafeAreaView className="flex-1 bg-slate-200">
-      <Header brand={data?.brand ?? "I'm a decent dev :)"} />
+      <Header brand={data?.brand} />
 
       <Description description={data.description} />
 
