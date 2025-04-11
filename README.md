@@ -43,6 +43,8 @@ Welcome to the **Modak Challenge**, a mobile application built using **React Nat
 - Added treatment in case of zero stock product
 - Followed Git best practices with small, concise and clear commit messages
 
+   *To test notifications, use the notification button on the product details screen, grant permission, and close the app. You wil get a push notification after 5 seconds.*
+
 ---
 
 ## Get started
@@ -81,4 +83,8 @@ Welcome to the **Modak Challenge**, a mobile application built using **React Nat
    ```
    Scan the QR code using the Expo Go app on your phone to quickly preview the app without needing a full native build.
 
+---
 
+## 🔗 Feel free to connect!
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thiagomunich)
