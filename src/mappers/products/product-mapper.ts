@@ -8,7 +8,7 @@ export function mapProductToDTO(product: Product): ProductDTO {
     title: product.title,
     price: product.price,
     stock: product.stock,
-    brand: product.brand || "Hire Munich Dev",
+    brand: product.brand || "Thiago 4 Dev",
     thumbnail: product.thumbnail,
     description: product.description,
   }
