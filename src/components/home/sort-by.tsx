@@ -4,7 +4,10 @@ import { View } from "react-native"
 import { ThemedChip } from "../shared/chip"
 import { useFiltersStore } from "@/store/filters"
 
-export function SortBy({ closeBottomSheet }: any) {
+interface Props {
+  closeBottomSheet: () => void
+}
+export function SortBy({ closeBottomSheet }: Props) {
   const { currentFilter, setCurrentFilter } = useFiltersStore()
 
   const handleFilterPress = (filter: string) => {
