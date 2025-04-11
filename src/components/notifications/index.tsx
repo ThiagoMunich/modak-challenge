@@ -1,30 +1,15 @@
-// components/NotificationButton.tsx
 import React from "react"
-import { Button, Alert } from "react-native"
-import * as Notifications from "expo-notifications"
-import { requestNotificationPermission } from "@/utils/notifications"
+import { View, Text, TouchableOpacity } from "react-native"
 
-export default function NotificationButton() {
-  const handlePress = async () => {
-    const hasPermission = await requestNotificationPermission()
+export function NotificationReminder() {
+  return (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      className="w-28 h-12 absolute top-[95%] bg-white rounded-full items-center justify-center"
+    >
+      <Text className="text-sm font-black">🔔</Text>
 
-    if (!hasPermission) {
-      Alert.alert("Permission required", "Enable notifications in settings.")
-      return
-    }
-
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: "Reminder",
-        body: "Hey! Don’t forget to purchase your product!",
-      },
-
-      trigger: {
-        type: "timeInterval",
-        seconds: 5,
-      } as Notifications.TimeIntervalTriggerInput,
-    })
-  }
-
-  return <Button title="Remind me in 10 seconds" onPress={handlePress} />
+      <Text className="text-xs font-black">Notify me</Text>
+    </TouchableOpacity>
+  )
 }

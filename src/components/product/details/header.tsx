@@ -6,6 +6,7 @@ import { Product } from "@/@types/products-types"
 import clsx from "clsx"
 import { Device } from "@/configs/device"
 import { useRouter } from "expo-router"
+import { NotificationReminder } from "@/components/notifications"
 
 type Props = Pick<Product, "brand">
 
@@ -20,6 +21,8 @@ export function Header({ brand }: Props) {
         </TouchableOpacity>
       )}
       <Text className="text-white font-thin text-5xl text-center w-ful">✨ {brand}</Text>
+
+      <NotificationReminder />
     </View>
   )
 }

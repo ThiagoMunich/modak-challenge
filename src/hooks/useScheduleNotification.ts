@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Alert } from "react-native"
 import * as Notifications from "expo-notifications"
-import { requestNotificationPermission } from "@/utils/notifications"
+import { requestNotificationPermission } from "@/utils/request-notifications-permission"
 
 export function useScheduleNotification() {
   const [loading, setLoading] = useState(false)

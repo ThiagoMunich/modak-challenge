@@ -1,28 +1,20 @@
-import React, { ReactNode } from "react"
+import React from "react"
 
 import { Button, Text, View } from "react-native"
 
-import Animated, { FadeInDown, SlideInDown, SlideInRight, ZoomIn } from "react-native-reanimated"
+import Animated, { FadeInDown, SlideInDown } from "react-native-reanimated"
 
 import { Product } from "@/@types/products-types"
-import NotificationButton from "@/components/notifications"
-import { useScheduleNotification } from "@/hooks/useScheduleNotification"
 import { ThemedButton } from "@/components/shared/button"
 
 type Props = Pick<Product, "stock">
 
 export function StockAvailability({ stock }: Props) {
-  const { scheduleNotification } = useScheduleNotification()
-
   const hasStock = stock > 0
 
   return (
     <Animated.View entering={FadeInDown.duration(600)} className="w-full px-5 mt-auto pb-20">
       {hasStock ? <CurrentStock stock={stock} /> : <NoStock />}
-
-      <ThemedButton onPress={scheduleNotification}>
-        <ThemedButton.Text>REMIND ME</ThemedButton.Text>
-      </ThemedButton>
     </Animated.View>
   )
 }
