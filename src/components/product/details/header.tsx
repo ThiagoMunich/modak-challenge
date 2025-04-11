@@ -1,16 +1,18 @@
 import React from "react"
 
-import { View, Text, TouchableOpacity, SafeAreaView } from "react-native"
+import { View, Text, TouchableOpacity } from "react-native"
 
-import { Product } from "@/@types/products-types"
-import clsx from "clsx"
-import { Device } from "@/configs/device"
 import { useRouter } from "expo-router"
+import { Device } from "@/configs/device"
+import { Product } from "@/@types/products-types"
 import { NotificationReminder } from "@/components/notifications"
+import { useScheduleNotification } from "@/hooks/useScheduleNotification"
 
 type Props = Pick<Product, "brand">
 
 export function Header({ brand }: Props) {
+  const { isLoading, scheduleNotification } = useScheduleNotification()
+
   const { back } = useRouter()
 
   return (
@@ -22,7 +24,7 @@ export function Header({ brand }: Props) {
       )}
       <Text className="text-white font-thin text-5xl text-center w-ful">✨ {brand}</Text>
 
-      <NotificationReminder />
+      <NotificationReminder onPress={() => scheduleNotification(brand)} />
     </View>
   )
 }

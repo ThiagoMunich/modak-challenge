@@ -4,11 +4,11 @@ import * as Notifications from "expo-notifications"
 import { requestNotificationPermission } from "@/utils/request-notifications-permission"
 
 export function useScheduleNotification() {
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const scheduleNotification = async () => {
+  const scheduleNotification = async (brand: string) => {
     try {
-      setLoading(true)
+      setIsLoading(true)
 
       const hasPermission = await requestNotificationPermission()
 
@@ -16,27 +16,25 @@ export function useScheduleNotification() {
         Alert.alert("Permission required", "Enable notifications in settings.")
         return
       }
-
-      // Agendar notificação
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: "Reminder",
-          body: "Hey! Don’t forget to purchase your product!",
+          title: "Notificação 🔔",
+          body: `${brand} is now available ✅`,
         },
         trigger: {
           type: "timeInterval",
-          seconds: 8,
+          seconds: 5,
         } as Notifications.TimeIntervalTriggerInput,
       })
     } catch (error) {
       console.error("Erro ao agendar notificação:", error)
     } finally {
-      setLoading(false)
+      setIsLoading(false)
     }
   }
 
   return {
     scheduleNotification,
-    loading,
+    isLoading,
   }
 }
