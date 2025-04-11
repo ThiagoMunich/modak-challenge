@@ -1,6 +1,6 @@
-# 🏡 Modak App – React Native Application
+# 🏡 Modak Challenge – React Native Application
 
-Welcome to the **Modak App**, a mobile application built using **React Native** and **Expo**. This project showcases a clean architecture, reusable components, global state management with stores, and modern data fetching with React Query.
+Welcome to the **Modak Challenge**, a mobile application built using **React Native** and **Expo**. This project showcases a clean architecture, reusable components, global state management with stores, and modern data fetching with React Query.
 
 ## 🚀 Tech Stack
 
@@ -51,7 +51,7 @@ Welcome to the **Modak App**, a mobile application built using **React Native** 
 
    ```bash
    git clone https://github.com/thiagomunich/modak-challenge.git
-   cd modak-app
+   cd modak-challenge
    ```
 
 2. Install dependencies
