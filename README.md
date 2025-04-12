@@ -2,6 +2,8 @@
 
 Welcome to the **Modak Challenge**, a mobile application built using **React Native** and **Expo**. This project showcases a clean architecture, reusable components, global state management with stores, and modern data fetching with React Query.
 
+https://github.com/user-attachments/assets/8e4b649b-4535-40e3-b007-940a4bdb7a00
+
 ## 🚀 Tech Stack
 
 - **React Native** with Expo
