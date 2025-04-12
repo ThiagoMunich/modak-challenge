@@ -41,7 +41,7 @@ Welcome to the **Modak Challenge**, a mobile application built using **React Nat
 - Cached API data for better performance
 - Customized app name, icon and splash screen
 - Added treatment in case of zero stock product
-- Added treatment in case of productos with no brand
+- Added treatment in case of products with no brand
 - Clear notifications queue before scheduling a new one
 - Followed Git best practices with small, concise and clear commit messages
 
