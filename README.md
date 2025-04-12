@@ -40,7 +40,9 @@ Welcome to the **Modak Challenge**, a mobile application built using **React Nat
 - Added clear filter functionality
 - Cached API data for better performance
 - Customized app name, icon and splash screen
+- Clear noticiários que before scheduling a new one
 - Added treatment in case of zero stock product
+- Added treatment in case of productos with no brand
 - Followed Git best practices with small, concise and clear commit messages
 
    *To test notifications, use the notification button on the product details screen, grant permission, and close the app. You wil get a push notification after 5 seconds.*
